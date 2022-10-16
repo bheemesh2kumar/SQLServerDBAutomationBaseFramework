@@ -22,7 +22,8 @@ public class DbConnectorUtility {
     }
 
 
-    public ArrayList<HashMap<String, Object>> getDbRecordsAsMap(String databaseName, String query) throws Exception {
+    public ArrayList<HashMap<String, Object>> getDbRecordsAsMap(String databaseName, String query)
+            throws Exception {
         try {
             con = getDBConnection(databaseName);
             stmt = con.createStatement();
@@ -52,7 +53,19 @@ public class DbConnectorUtility {
             stmt.close();
             con.close();
         }
+    }
 
+
+    public ArrayList<Object> getColumnValuesAsList(String colHeaderName, String databaseName, String query)
+            throws Exception {
+
+        ArrayList<HashMap<String, Object>> dbobjects = getDbRecordsAsMap(databaseName, query);
+        ArrayList<Object> colvalues = new ArrayList<Object>();
+        for (int i = 0; i < dbobjects.size(); i++) {
+            Object ob = dbobjects.get(i).get(colHeaderName);
+            colvalues.add(ob);
+        }
+        return colvalues;
     }
 
 
