@@ -59,13 +59,17 @@ public class DbConnectorUtility {
     public ArrayList<Object> getColumnValuesAsList(String colHeaderName, String databaseName, String query)
             throws Exception {
 
+        System.out.println("this is implementation for getcolmns as list");
+
         ArrayList<HashMap<String, Object>> dbobjects = getDbRecordsAsMap(databaseName, query);
         ArrayList<Object> colvalues = new ArrayList<Object>();
         for (int i = 0; i < dbobjects.size(); i++) {
             Object ob = dbobjects.get(i).get(colHeaderName);
             colvalues.add(ob);
         }
+
         return colvalues;
+
     }
 
 
