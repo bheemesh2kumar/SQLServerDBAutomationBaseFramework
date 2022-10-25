@@ -65,7 +65,9 @@ public class DbConnectorUtility {
             Object ob = dbobjects.get(i).get(colHeaderName);
             colvalues.add(ob);
         }
+         System.out.println("successfully implemented");
         return colvalues;
+        
     }
 
 
